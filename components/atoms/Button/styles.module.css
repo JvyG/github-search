@@ -1,0 +1,37 @@
+.button-primary {
+  &:disabled {
+    @apply bg-slate-300
+  }
+  &:hover:enabled {
+    @apply bg-slate-800
+  }
+  &:not(:active):focus-visible {
+    @apply outline-none ring border-slate-400
+  }
+  &:active:enabled {
+    @apply bg-slate-900
+  }
+  &:enabled {
+    @apply bg-slate-700
+  }
+}
+
+.button-tertiary {
+  @apply focus:outline-none transition-colors;
+  &:disabled {
+    @apply bg-slate-100
+  }
+  &:hover:enabled {
+    @apply bg-slate-50
+  }
+  &:not(:active):focus-visible {
+    /* outline: none; */
+    @apply outline-slate-400 outline-offset-[-2px] outline-2
+  }
+  &:active:enabled {
+    @apply bg-slate-100
+  }
+  &:enabled {
+    @apply bg-white
+  }
+}
