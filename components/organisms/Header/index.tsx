@@ -16,7 +16,7 @@ export default function Header() {
       <div className="w-full xl:w-[1200px] 2xl:w-[1440px] px-4 lg:px-16 mx-auto flex flex-row items-center">
         <h1 className="text-center">Github Search Proyect</h1>
         <nav className='place-self-center	ml-auto mr-auto'>
-          <ul className="flex flex-row">
+          <ul className="flex flex-row gap-[1px]">
             <li>
               <Button theme='tertiary' onClick={redirectHandler('/users')}>Users</Button>
             </li>
