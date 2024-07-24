@@ -1,0 +1,6 @@
+.textfield {
+  @apply rounded-sm focus:outline-none transition-colors text-gray-950 py-[8px] px-[12px];
+  &:not(:active):focus-visible {
+    @apply outline-slate-400 outline-offset-[-1px] outline-2
+  }
+}
