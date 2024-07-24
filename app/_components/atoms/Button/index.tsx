@@ -19,7 +19,7 @@ export default function Button(props: ButtonProps) {
 
   return (
     <button
-      className={`rounded-md py-3 px-2 ${styles[`button-${theme}`]}`}
+      className={`${styles.button} ${styles[`button-${theme}`]}`}
       disabled={disabled}
       data-testid={testId}
       onClick={onClick}
