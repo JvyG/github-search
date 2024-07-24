@@ -1,3 +1,6 @@
+.button {
+  @apply rounded-md py-3 px-2
+}
 .button-primary {
   @apply focus:outline-none transition-colors text-slate-50;
   &:disabled {
