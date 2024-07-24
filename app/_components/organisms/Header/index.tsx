@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import Button from '@/components/atoms/Button';
+import Button from '@/app/_components/atoms/Button';
 
 export default function Header() {
   const router = useRouter()
