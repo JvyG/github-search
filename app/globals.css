@@ -20,6 +20,10 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
+input {
+  outline: none
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

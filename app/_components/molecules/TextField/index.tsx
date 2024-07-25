@@ -1,19 +1,20 @@
-import { ChangeEvent, ChangeEventHandler, KeyboardEventHandler, useCallback, useState } from "react"
-import styles from "./styles.module.css"
+import { ChangeEvent, ReactNode, useCallback, useState } from "react";
+import { StepBackwardFilled } from "@ant-design/icons";
+import styles from "./styles.module.css";
 
 interface TextFieldProps {
-  type: 'text' | 'number' | 'password' | 'date' | 'email'
-  name: string
-  label: string
-  id: string
-  disabled?: boolean
-  placeholder: string
-  onChange?: (value: string) => void
-  required?: boolean
-  testId?: string
-  value?: string
+  type: "text" | "number" | "password" | "date" | "email";
+  name: string;
+  label: string;
+  id: string;
+  disabled?: boolean;
+  placeholder: string;
+  onChange?: (value: string) => void;
+  required?: boolean;
+  testId?: string;
+  value?: string;
+  icon?: ReactNode;
 }
-
 
 export default function TextField(props: TextFieldProps) {
   const {
@@ -26,19 +27,25 @@ export default function TextField(props: TextFieldProps) {
     onChange,
     required,
     testId,
-    value = ''
-  } = props
+    value = "",
+    icon,
+  } = props;
 
-  const [_value, setValue] = useState(value)
+  const [_value, setValue] = useState(value);
 
-  const _onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
-    if (onChange) onChange(e.target.value)
-  }, [onChange])
+  const _onChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value);
+      if (onChange) onChange(e.target.value);
+    },
+    [onChange]
+  );
 
   return (
-    <div className="flex flex-col">
-      <label htmlFor={id} className="text-xs text-slate-500	mb-[4px]">{label}</label>
+    <div className="flex flex-col relative">
+      <label htmlFor={id} className="text-xs text-slate-500	mb-[4px]">
+        {label}
+      </label>
       <input
         type={type}
         id={id}
@@ -49,8 +56,13 @@ export default function TextField(props: TextFieldProps) {
         required={required}
         data-testid={testId}
         onChange={_onChange}
-        className={styles.textfield}
+        className={`${styles.textfield}${
+          icon ? ` ${styles["textfield-has-icon"]}` : ""
+        }`}
       />
+      <div className={styles['textfield-icon']}>
+        {icon}
+      </div>
     </div>
-  )
+  );
 }

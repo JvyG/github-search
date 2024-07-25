@@ -12,7 +12,7 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 fixed min-w-full z-50 h-[56px] bg-white flex items-center justify-center">
+    <header className="fixed top-0 left-0 fixed min-w-full z-50 h-[56px] bg-white flex items-center justify-center shadow-sm">
       <div className="w-full xl:w-[1200px] 2xl:w-[1440px] gap-[8px] sm:gap-0 px-4 lg:px-16 mx-auto flex flex-row items-center">
         <h1 className="text-center">Github Search Proyect</h1>
         <nav className='place-self-center	ml-auto mr-auto'>
