@@ -1,11 +1,14 @@
-import Header from "@/app/_components/organisms/Header";
+import Header from "@/components/organisms/Header";
+import Repositories from "@/app/_components/organisms/Repositories";
+import SWRProvider from "@/providers/swr";
+
 export default function Page() {
   return (
-    <main className="flex w-full xl:w-[1200px] 2xl:w-[1440px] px-4 lg:px-16 m-auto min-h-screen w-full flex-col items-center justify-between p-16">
+    <main className="flex w-full xl:w-[1200px] 2xl:w-[1440px] px-2 pt-[80px] lg:px-16 pb-4 m-auto min-h-screen w-full flex-col items-center justify-between">
       <Header />
-      <div>
-        <h1>Repositories Page</h1>
-      </div>
+      <SWRProvider>
+        <Repositories />
+      </SWRProvider>
     </main>
   );
 }

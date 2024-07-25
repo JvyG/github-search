@@ -11,9 +11,11 @@
     "prepare": "husky && husky install"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.4.0",
     "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@commitlint/cli": "19.3.0",
