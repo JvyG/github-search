@@ -1,12 +1,18 @@
-import { useLayoutEffect, useState } from "react";
+'use client'
+import { useEffect, useState } from "react";
+
+interface WindowSize {
+  width: number
+  height: number
+}
 
 export function useWindowSize() {
-  const [size, setSize] = useState({
+  const [size, setSize] = useState<WindowSize>({
     width: 0,
     height: 0,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       setSize({
         width: window.innerWidth,
