@@ -1,5 +1,5 @@
 import Header from "@/components/organisms/Header";
-import Repositories from "@/app/_components/organisms/Repositories";
+import Repositories from "@/components/organisms/Repositories";
 import SWRProvider from "@/providers/swr";
 
 export default function Page() {
