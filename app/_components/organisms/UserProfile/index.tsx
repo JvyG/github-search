@@ -24,7 +24,7 @@ export default function UserProfile(props: UserProfileProps) {
   return (
     <div className="flex flex-col gap-[12px] w-full sm:max-w-[240px]">
       <img
-        src={avatar}
+        src={`${avatar}&s=240`}
         alt={name}
         width={240}
         height={240}

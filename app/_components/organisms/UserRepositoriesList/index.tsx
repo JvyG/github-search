@@ -21,7 +21,7 @@ export default function UserRepositoriesList(props: UserRepositoriesListProps) {
             className="border-2 border-gray-200 p-[12px] rounded-md gap-[8px] flex flex-col justify-between"
           >
             <div className="flex flex-row justify-between	items-center">
-              <Link href={repo.html_url} target="_self" className="text-md">
+              <Link href={repo.html_url} target="_blank" className="text-md">
                 {repo.name}
               </Link>
               <Chip label={repo.visibility} />

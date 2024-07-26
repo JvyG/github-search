@@ -1,6 +1,9 @@
+import { Metadata } from "next";
+
 import Header from "@/components/organisms/Header";
 import UserInfo from "@/components/organisms/UserInfo";
 
+// revalidate all fetch request every hour
 export const revalidate = 3600
 
 async function getData(userId: string) {
@@ -20,6 +23,11 @@ async function getData(userId: string) {
     repositories,
   };
 }
+
+export const metadata: Metadata = {
+  title: "GitHub user details",
+  description: "GitHub user profile details",
+};
 
 export default async function Page({ params }: any) {
   const { userInfo, repositories } = await getData(params.userid);
