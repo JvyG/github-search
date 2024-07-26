@@ -11,13 +11,13 @@
 }
 
 .textfield-icon {
-  @apply absolute top-[50%] left-[12px];
+  @apply absolute top-[50%] left-[12px] flex;
 }
 
 .textfield-icon svg {
-  @apply fill-slate-400;
+  @apply fill-slate-300;
 }
 
 .textfield::placeholder {
-  @apply text-slate-400;
+  @apply text-slate-300;
 }

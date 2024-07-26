@@ -21,7 +21,12 @@ body {
 }
 
 input {
-  outline: none
+  outline: none;
+  caret-color: black;
+}
+
+* {
+  caret-color: transparent;
 }
 
 @layer utilities {

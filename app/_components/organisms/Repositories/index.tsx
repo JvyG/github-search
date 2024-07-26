@@ -29,8 +29,8 @@ export default function Repositories() {
     <section className="flex flex-col gap-8 w-full">
       <TextField
         id="respository-name"
-        label="Respository name"
-        name="Respository name"
+        label="Repository name"
+        name="Repository name"
         placeholder="Name"
         type="text"
         value={repository}
