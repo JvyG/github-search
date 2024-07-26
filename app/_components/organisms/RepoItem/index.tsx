@@ -59,16 +59,16 @@ export default function RepoItem(props: RepoItemProps) {
 
   return (
     <Card type="rest" className="w-full border-2 border-gray-200">
-      <div key={name} className="flex flex-row gap-[12px]">
+      <div key={name} className="flex flex-row gap-[12px] h-full">
         <img
           src={`${avatar}&s=32`}
           alt={name}
           width={32}
           height={32}
           loading="lazy"
-          className="h-[32px] self-center rounded-full"
+          className="h-[32px] self-start rounded-full"
         />
-        <div className="flex flex-col min-w-[0]">
+        <div className="flex flex-col min-w-[0] justify-between	">
           <div className="flex flex-row place-content-between">
             <Link
               href={url}
@@ -78,8 +78,8 @@ export default function RepoItem(props: RepoItemProps) {
               {name}
             </Link>
           </div>
-          <p className="text-xs py-[4px]">{description}</p>
-          <div className="flex sm:flex-row items-start gap-[8px]">
+          <p className="text-xs py-[4px] max-h-[54px] overflow-hidden flex-1">{description}</p>
+          <div className={`flex sm:flex-row items-start gap-[8px]${!topics?.length ? 'hidden': ''}`}>
             {topics?.map((topic, index) => (
               <Chip
                 key={topic}

@@ -21,7 +21,7 @@ export default function Users() {
 
   const userDebounced = useDebounce(user, 400);
   const { data, isLoading } = useSWR(
-    userDebounced ? `search/users?q=${userDebounced}&page=${page}&per_page=10` : null
+    userDebounced ? `search/users?q=${userDebounced}&page=${page}&per_page=24` : null
   );
 
   return (
@@ -49,7 +49,7 @@ export default function Users() {
       )}
       {data?.items?.length ? (
         <Fragment>
-          <Card type="rest" className="flex flex-col gap-2">
+          <Card type="rest" className="grid grid-cols-1 md:grid-cols-3 auto-rows-fr gap-2">
             {data.items.map((item: any) => (
               <UserItem
                 name={item.login}

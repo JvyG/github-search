@@ -21,7 +21,7 @@ export default function Repositories() {
   const repositoryDebounced = useDebounce(repository, 400)
   const { data, error, isLoading } = useSWR(
     repository
-      ? `search/repositories?q=${repositoryDebounced}&page=${page}&per_page=10`
+      ? `search/repositories?q=${repositoryDebounced}&page=${page}&per_page=12`
       : null
   );
 
@@ -48,7 +48,7 @@ export default function Repositories() {
       )}
       {data?.items?.length ? (
         <Fragment>
-          <Card type="rest" className="flex flex-col gap-2">
+          <Card type="rest" className="grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-2">
             {data.items.map((item: any) => (
               <RepoItem
                 name={item.full_name}
