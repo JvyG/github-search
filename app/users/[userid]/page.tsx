@@ -14,7 +14,7 @@ async function getData(userId: string) {
   const data = await res.json();
   
   const repRes = await fetch(
-    `${data.repos_url}?type=all&per_page=10&sort=pushed&direction=desc`
+    `${data.repos_url}?type=all&per_page=12&sort=pushed&direction=desc`
   );
   const repositories = await repRes.json();
 

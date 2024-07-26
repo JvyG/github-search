@@ -26,7 +26,7 @@ export default function UserRepositoriesList(props: UserRepositoriesListProps) {
               </Link>
               <Chip label={repo.visibility} />
             </div>
-            <p className="text-xs text-slate-700 mt-[4px] justify-self-start flex-1">
+            <p className="text-xs text-slate-700 mt-[4px] justify-self-start flex-1 max-h-[54px] overflow-hidden">
               {repo.description || "No description"}
             </p>
             <div className="flex flex-row gap-[8px]">
