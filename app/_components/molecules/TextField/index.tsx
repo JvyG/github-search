@@ -42,7 +42,7 @@ export default function TextField(props: TextFieldProps) {
   );
 
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col relative justify-center">
       <label htmlFor={id} className="text-xs text-slate-500	mb-[4px]">
         {label}
       </label>

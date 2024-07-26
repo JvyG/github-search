@@ -1,4 +1,5 @@
 import Card from "@/components/atoms/Card";
+import Link from "@/components/atoms/Link";
 
 interface RepoItemProps {
   name: string
@@ -26,7 +27,9 @@ export default function UserItem(props: RepoItemProps) {
         />
         <div className="flex flex-col min-w-[0] justify-center">
           <div className="flex flex-row place-content-between">
-            <a href={url} target="_blank" className="hover:underline text-blue-600 visited:text-purple-600">{name}</a>
+            <Link href={`/users/${name}`} target="_self">
+              {name}
+            </Link>
           </div>
         </div>
       </div>

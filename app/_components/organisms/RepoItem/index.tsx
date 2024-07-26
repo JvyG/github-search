@@ -2,45 +2,48 @@ import { StarOutlined } from "@ant-design/icons";
 
 import Card from "@/components/atoms/Card";
 import Chip from "@/components/atoms/Chip";
+import Link from "@/components/atoms/Link";
+import { formatNumber } from "@/utils/formatNumberStars";
 
 interface RepoItemProps {
-  name: string
-  description: string
-  url: string
-  language: string
-  avatar?: string
-  topics?: string[]
-  stars?: number
-  lastUpdate?: string
+  name: string;
+  description: string;
+  url: string;
+  language: string;
+  avatar?: string;
+  topics?: string[];
+  stars?: number;
+  lastUpdate?: string;
 }
 
-const formatNumber = (number: number) => {
-  const numberDivided = number / 1000
-  if (numberDivided < 1) return number
-  if (numberDivided > 100) return `${Number(numberDivided)}k`
-  return `${numberDivided.toFixed(1)}k`
-}
+const formateDate = (date: string = "") => {
+  const lastUpdate = date ? new Date(date) : new Date();
+  const today = new Date();
+  const secondsDiff = (today.getTime() - lastUpdate.getTime()) / 1000;
 
-const formateDate = (date: string = '') => {
-  const lastUpdate = date ? new Date(date) : new Date()
-  const today = new Date()
-  const secondsDiff = (today.getTime() - lastUpdate.getTime()) / 1000
-
-  if (secondsDiff >= 86400 && secondsDiff < 172800)
-    return 'Updated yesterday'
+  if (secondsDiff >= 86400 && secondsDiff < 172800) return "Updated yesterday";
 
   if (secondsDiff < 86400) {
-    if (secondsDiff < 60) return `Updated ${secondsDiff} second${secondsDiff > 1 ? 's' : ''} ago`
-    const minutes = Math.floor(secondsDiff / 60)
-    if (minutes < 60) return `Updated ${minutes} minute${minutes > 1 ? 's' : ''} ago`
+    if (secondsDiff < 60)
+      return `Updated ${secondsDiff} second${secondsDiff > 1 ? "s" : ""} ago`;
+    const minutes = Math.floor(secondsDiff / 60);
+    if (minutes < 60)
+      return `Updated ${minutes} minute${minutes > 1 ? "s" : ""} ago`;
     const hours = Math.floor(secondsDiff / 3600);
-    return `Updated ${hours} hour${hours > 1 ? 's' : ''} ago`
+    return `Updated ${hours} hour${hours > 1 ? "s" : ""} ago`;
   }
 
   if (lastUpdate.getFullYear() === today.getFullYear())
-    return `Update on ${lastUpdate.toLocaleDateString('es-mx', { day: 'numeric', month: "short"})}`
-  return `Update on ${lastUpdate.toLocaleDateString('es-mx', { day: 'numeric', month: "short", year: "numeric"})}`
-}
+    return `Update on ${lastUpdate.toLocaleDateString("es-mx", {
+      day: "numeric",
+      month: "short",
+    })}`;
+  return `Update on ${lastUpdate.toLocaleDateString("es-mx", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  })}`;
+};
 
 export default function RepoItem(props: RepoItemProps) {
   const {
@@ -51,8 +54,8 @@ export default function RepoItem(props: RepoItemProps) {
     avatar,
     language,
     lastUpdate,
-    stars = 0
-  } = props
+    stars = 0,
+  } = props;
 
   return (
     <Card type="rest" className="w-full border-2 border-gray-200">
@@ -67,19 +70,28 @@ export default function RepoItem(props: RepoItemProps) {
         />
         <div className="flex flex-col min-w-[0]">
           <div className="flex flex-row place-content-between">
-            <a href={url} target="_blank" className="hover:underline text-blue-600 visited:text-purple-600">{name}</a>
-
+            <Link
+              href={url}
+              target="_blank"
+              className="overflow-hidden whitespace-nowrap text-ellipsis"
+            >
+              {name}
+            </Link>
           </div>
           <p className="text-xs py-[4px]">{description}</p>
           <div className="flex sm:flex-row items-start gap-[8px]">
             {topics?.map((topic, index) => (
-              <Chip key={topic} label={topic} className={`mb-[4px] ${index > 1 ? 'hidden sm:block' : ''}`}/>
+              <Chip
+                key={topic}
+                label={topic}
+                className={`mb-[4px] ${index > 1 ? "hidden sm:block" : ""}`}
+              />
             ))}
           </div>
           <div className="flex mt-[4px] flex-row gap-[12px] text-xs text-gray-500">
             <p>{language}</p>
             <span className="hidden sm:block">
-              <StarOutlined className="mr-[4px]"/>
+              <StarOutlined className="mr-[4px]" />
               {formatNumber(stars)}
             </span>
             <p>{formateDate(lastUpdate)}</p>
@@ -87,5 +99,5 @@ export default function RepoItem(props: RepoItemProps) {
         </div>
       </div>
     </Card>
-  )
+  );
 }
