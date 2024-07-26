@@ -18,7 +18,7 @@ export default function UserItem(props: RepoItemProps) {
     <Card type="rest" className="w-full border-2 border-gray-200">
       <div key={name} className="flex flex-row gap-[12px]">
         <img
-          src={avatar}
+          src={`${avatar}&s=32`}
           alt={name}
           width={32}
           height={32}

@@ -5,7 +5,7 @@ import HomeDescription from "@/components/organisms/HomeDescription";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between px-6 pt-[80px] bg-slate-200">
-      <Header homeText />
+      <Header />
       <div className="flex flex-col lg:flex-row flex-1 w-full xl:w-[1200px] 2xl:w-[1440px] lg:px-16 mx-auto gap-[24px] lg:gap[56px]">
         <HomeDescription />
         <div className="flex-1 flex flex-col gap-[12px] items-center" style={{

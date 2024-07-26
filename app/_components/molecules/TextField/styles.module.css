@@ -3,11 +3,11 @@
   transition: box-shadow 0.2s ease-in-out;
   &:not(:active):focus-visible {
     box-shadow: 0 0 0 1px rgb(148, 163, 184);
-  };
+  }
 }
 
 .textfield-has-icon {
-  padding-left: 42px
+  padding-left: 42px;
 }
 
 .textfield-icon {
