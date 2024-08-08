@@ -49,7 +49,7 @@ export default function Repositories() {
     const query = search ? `?${search}` : "";
 
     router.replace(`${pathname}${query}`);
-  }, [repositoryDebounced, page])
+  }, [repositoryDebounced, page, searchParams, router, pathname])
 
   return (
     <section className="flex flex-col gap-8 w-full">
