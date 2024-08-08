@@ -3,6 +3,8 @@ import { Fragment, useEffect, useState } from "react";
 import useSWR from "swr";
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 import { useDebounce } from "@/hooks/useDebounce";
 import TextField from "@/components/molecules/TextField";
@@ -11,8 +13,12 @@ import Pagination from "@/components/organisms/Pagination";
 import UserItem from "@/components/organisms/UserItem";
 
 export default function Users() {
-  const [user, setUser] = useState("");
-  const [page, setPage] = useState(1);
+  const router = useRouter()
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const [user, setUser] = useState(searchParams.get('name') || '');
+  const [page, setPage] = useState(searchParams.get('page') || 1);
 
   const onChangeRepository = (value: string) => {
     setUser(value);
@@ -23,6 +29,27 @@ export default function Users() {
   const { data, isLoading } = useSWR(
     userDebounced ? `search/users?q=${userDebounced}&page=${page}&per_page=24` : null
   );
+
+  useEffect(() => {
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    
+    if(!userDebounced){
+      current.delete('name')
+    } else {
+      current.set('name', userDebounced)
+    }
+
+    if(!page){
+      current.delete('page')
+    } else {
+      current.set('page', `${page}`)
+    }
+    
+    const search = current.toString();
+    const query = search ? `?${search}` : "";
+
+    router.replace(`${pathname}${query}`);
+  }, [userDebounced, page])
 
   return (
     <section className="flex flex-col gap-8 w-full">
@@ -62,7 +89,7 @@ export default function Users() {
           <Pagination
             currentPage={page}
             onPageChange={setPage}
-            totalPages={data?.total_count || 0}
+            totalPages={Math.ceil(Math.min(data?.total_count, 1000) / 24) || 0}
           />
         </Fragment>
       ) : (

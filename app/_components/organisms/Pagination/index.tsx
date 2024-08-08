@@ -3,7 +3,7 @@ import 'react-responsive-pagination/themes/classic.css';
 
 interface PaginationProps {
   totalPages: number
-  currentPage: number
+  currentPage: number | string
   onPageChange: (page: number) => void
 }
 
@@ -16,7 +16,7 @@ export default function Pagination(props: PaginationProps) {
 
   return (
     <ResponsivePagination
-      current={currentPage}
+      current={Number(currentPage)}
       total={totalPages}
       onPageChange={onPageChange}
     />
