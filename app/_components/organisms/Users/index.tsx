@@ -49,7 +49,7 @@ export default function Users() {
     const query = search ? `?${search}` : "";
 
     router.replace(`${pathname}${query}`);
-  }, [userDebounced, page])
+  }, [userDebounced, page, searchParams, router, pathname])
 
   return (
     <section className="flex flex-col gap-8 w-full">
