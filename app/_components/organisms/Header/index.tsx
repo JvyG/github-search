@@ -1,17 +1,6 @@
-// import { useRouter } from "next/navigation";
 import Image from "next/image";
-// import Button from "@/app/_components/atoms/Button";
-// import { MouseEvent } from "react";
 
 export default function Header() {
-  // const router = useRouter();
-
-  // const redirectHandler =
-  //   (path: string) => (e: MouseEvent<HTMLButtonElement>) => {
-  //     e.stopPropagation();
-  //     router.push(path);
-  //   };
-
   return (
     <header className="fixed top-0 left-0 fixed min-w-full z-50 h-[56px] bg-white flex items-center justify-center shadow-sm">
       <div className="w-full xl:w-[1200px] 2xl:w-[1440px] gap-[8px] sm:gap-0 px-4 lg:px-16 mx-auto flex flex-row items-center justify-between">
