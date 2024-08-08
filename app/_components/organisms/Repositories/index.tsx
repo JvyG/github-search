@@ -39,7 +39,7 @@ export default function Repositories() {
       current.set('name', repositoryDebounced)
     }
 
-    if(!page){
+    if(Number(page) <= 1){
       current.delete('page')
     } else {
       current.set('page', `${page}`)
