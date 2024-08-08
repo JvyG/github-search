@@ -1,7 +1,8 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import useSWR from "swr";
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { useDebounce } from "@/hooks/useDebounce";
 import TextField from "@/components/molecules/TextField";
@@ -10,9 +11,13 @@ import RepoItem from "@/components/organisms/RepoItem";
 import Pagination from "@/components/organisms/Pagination";
 
 export default function Repositories() {
-  const [repository, setRepository] = useState("");
-  const [page, setPage] = useState(1);
+  const router = useRouter()
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
+  const [repository, setRepository] = useState(searchParams.get('name') || '');
+  const [page, setPage] = useState(searchParams.get('page') || 1);
+  
   const onChangeRepository = (value: string) => {
     setRepository(value)
     setPage(1)
@@ -24,6 +29,27 @@ export default function Repositories() {
       ? `search/repositories?q=${repositoryDebounced}&page=${page}&per_page=12`
       : null
   );
+
+  useEffect(() => {
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    
+    if(!repositoryDebounced){
+      current.delete('name')
+    } else {
+      current.set('name', repositoryDebounced)
+    }
+
+    if(!page){
+      current.delete('page')
+    } else {
+      current.set('page', `${page}`)
+    }
+    
+    const search = current.toString();
+    const query = search ? `?${search}` : "";
+
+    router.replace(`${pathname}${query}`);
+  }, [repositoryDebounced, page])
 
   return (
     <section className="flex flex-col gap-8 w-full">
@@ -66,7 +92,7 @@ export default function Repositories() {
           <Pagination 
             currentPage={page}
             onPageChange={setPage}
-            totalPages={data?.total_count || 0}
+            totalPages={Math.ceil(Math.min(data?.total_count, 1000) / 12) || 0}
           />
         </Fragment>
       ) : ''}

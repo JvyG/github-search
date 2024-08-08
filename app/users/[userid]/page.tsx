@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 
-import Header from "@/components/organisms/Header";
 import UserInfo from "@/components/organisms/UserInfo";
 
 // revalidate all fetch request every hour
@@ -34,7 +33,6 @@ export default async function Page({ params }: any) {
 
   return (
     <main className="flex w-full xl:w-[1200px] 2xl:w-[1440px] px-2 pt-[80px] lg:px-16 pb-[24px] m-auto max-h-screen w-full flex-col items-center justify-between overflow-y-auto">
-      <Header />
       <UserInfo
         userId={userInfo.login}
         name={userInfo.name || userInfo.login}

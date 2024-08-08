@@ -1,42 +1,38 @@
-"use client";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Button from "@/app/_components/atoms/Button";
-import { MouseEvent } from "react";
+// import Button from "@/app/_components/atoms/Button";
+// import { MouseEvent } from "react";
 
 export default function Header() {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const redirectHandler =
-    (path: string) => (e: MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      router.push(path);
-    };
+  // const redirectHandler =
+  //   (path: string) => (e: MouseEvent<HTMLButtonElement>) => {
+  //     e.stopPropagation();
+  //     router.push(path);
+  //   };
 
   return (
     <header className="fixed top-0 left-0 fixed min-w-full z-50 h-[56px] bg-white flex items-center justify-center shadow-sm">
       <div className="w-full xl:w-[1200px] 2xl:w-[1440px] gap-[8px] sm:gap-0 px-4 lg:px-16 mx-auto flex flex-row items-center justify-between">
-        <Button theme="tertiary" onClick={redirectHandler("/")}>
+        <a href="/" target="_self" style={{ padding: 12 }}>
           Home
-        </Button>
+        </a>
         <nav className="place-self-center ml-auto mr-auto">
           <ul className="flex flex-row gap-[1px]">
             <li>
-              <Button theme="tertiary" onClick={redirectHandler("/users")}>
+              <a href="/users" target="_self" style={{ padding: 12 }}>
                 Users
-              </Button>
+              </a>
             </li>
             <li>
-              <Button
-                theme="tertiary"
-                onClick={redirectHandler("/repositories")}
-              >
+              <a href="/repositories" target="_self">
                 Repositories
-              </Button>
+              </a>
             </li>
           </ul>
         </nav>
-        <a href="https://github.com/JvyG/github-search" target="_blank">
+        <a href="https://github.com/JvyG/github-search" target="_blank" style={{ padding: 12 }}>
           <Image
             src={"/logos/github-mark.png"}
             width={24}
